@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<main>
+    <section class="px-[20vw] py-[5em] bg-sky-500 text-white text-center">
+        <h1 class="text-5xl font-bold">{{ controller_name }}</h1>
+        <p class="text-xl">Catalogue en ligne de la médiathèque de Trifouillis-les-Oies</p>
+        <a href="">Parcourez le catalogue</a>
+
+    </section>
+    <section class="px-[20vw] py-[5em]">
+        <h1 class="text-5xl font-bold">Biblios: qu'est-ce que c'est ?</h1>
+        <p class="text-xl">Biblios est la plateforme officielle de consultation du catalogue de la médiathèque de Trifouillis-les-Oies. Explorez notre collection avec une recherche efficace, vérifiez la disponibilité des ouvrages en temps réel, et effectuez des réservations en toute simplicité. Biblios s'engage pour faciliter l'accès à la culture et promouvoir la richesse de notre patrimoine littéraire.</p>
+
+        <ul class="list-disc">
+            <span>Fonctionnalités clés :</span>
+
+            <li>Recherche avancée de livres</li>
+
+            <li>Consultation en temps réel du statut des ouvrages (disponible, emprunté, indisponible)</li>
+
+            <li>Affichage détaillé des informations sur les livres</li>
+
+            <li>Processus de réservation simplifié</li>
+        </ul>
+    </section>
+</main>
+{% endblock %}

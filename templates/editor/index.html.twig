@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EditorController!{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+
+    <turbo-frame id="editor_list">
+        <!-- La liste des éditeurs sera chargée ici -->
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endfor %}
+    </turbo-frame>
+{% endblock %}

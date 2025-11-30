@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+use App\Form\EditorType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Editor;
+
+final class EditorController extends AbstractController
+{
+    #[Route('/editor', name: 'app_editor')]
+    public function index(Request $request, EntityManagerInterface $em): Response
+    {
+        $editor = new Editor("");
+        $form = $this->createForm(EditorType::class, $editor);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            //dd($editor);
+
+            $em->persist($editor);
+            $em->flush();
+
+            $this->addFlash('success', 'Éditeur ajouté avec succès !');
+        }
+
+        return $this->render('editor/index.html.twig', [
+            'controller_name' => 'EditorController',
+            'form' => $form
+        ]);
+    }
+}
