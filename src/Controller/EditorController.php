@@ -12,8 +12,13 @@ use App\Entity\Editor;
 
 final class EditorController extends AbstractController
 {
+    public function __construct(private EntityManagerInterface $em)
+    {
+
+    }
+
     #[Route('/editor', name: 'app_editor')]
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function index(Request $request): Response
     {
         $editor = new Editor("");
         $form = $this->createForm(EditorType::class, $editor);
@@ -23,8 +28,8 @@ final class EditorController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             //dd($editor);
 
-            $em->persist($editor);
-            $em->flush();
+            $this->em->persist($editor);
+            $this->em->flush();
 
             $this->addFlash('success', 'Éditeur ajouté avec succès !');
         }
