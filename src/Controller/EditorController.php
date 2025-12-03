@@ -9,10 +9,11 @@ use App\Form\EditorType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Editor;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class EditorController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em, private ValidatorInterface $validator)
     {
 
     }
